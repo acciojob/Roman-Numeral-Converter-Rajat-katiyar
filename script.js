@@ -8,9 +8,29 @@ function convertToRoman(num) {
       5:['V', 5], 
       6:['I', 1]
     };
+let roman = "";  
+  
+    const specialCases = [  
+        ['CM', 900], ['CD', 400],  
+        ['XC', 90], ['XL', 40],  
+        ['IX', 9], ['IV', 4]  
+    ];  
 
-  //your code here
+	for (const [romanNumeral, value] of specialCases) {  
+        while (num >= value) {  
+            roman += romanNumeral;  
+            num -= value;  
+        }  
+    }  
 
+    for (let i = 0; i < 7; i++) {  
+        while (num >= obj[i][1]) {  
+            roman += obj[i][0];  
+            num -= obj[i][1];  
+        }  
+    }  
+
+    return roman;  
 }
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
